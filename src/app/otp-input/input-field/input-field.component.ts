@@ -32,7 +32,6 @@ export class InputFieldComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.form = this._fb.group({});
     for (let i = 0; i <= this.otpList.length; i++) {
-
       const name: string = this.otpList[i];
       this.form.addControl(name, this._fb.control('', [Validators.required, Validators.maxLength(1)]))
       if (i > 0) {
@@ -52,13 +51,17 @@ export class InputFieldComponent implements OnInit, AfterViewInit {
   }
   handleUserInput(event: KeyboardEvent, item: string, input: HTMLInputElement, index: number) {
     const regex= /^[0-9]*$/
+    if(!regex.test(input.value)){
+      this.f[item].reset();
+      return;
+    }
     console.log(regex.test(input.value),'input value')
     // if(!regex.test(input.value)){
 
     //   return;
     // }
 
-    if (event.code === 'Backspace') {
+    if (event.code === 'Backspace' || event.which === 8 || event.location === ) {
       const el = this.inputRef?.find(element => element.nativeElement.name === this.otpList[index - 1]);
       if (index >= 1) {
         this.f[item].reset();
