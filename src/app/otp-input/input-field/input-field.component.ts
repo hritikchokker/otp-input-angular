@@ -20,6 +20,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class InputFieldComponent implements OnInit, AfterViewInit {
 
   // form!:FormGroup;
+  codeValue;
   @Input() otpList: any[] = []
   @Input() isOnlyNumbers = true;
   form!: FormGroup;
@@ -50,18 +51,15 @@ export class InputFieldComponent implements OnInit, AfterViewInit {
     this.formValueChanges();
   }
   handleUserInput(event: KeyboardEvent, item: string, input: HTMLInputElement, index: number) {
+
     const regex= /^[0-9]*$/
     if(!regex.test(input.value)){
       this.f[item].reset();
       return;
     }
-    console.log(regex.test(input.value),'input value')
-    // if(!regex.test(input.value)){
-
-    //   return;
-    // }
-
-    if (event.code === 'Backspace' || event.which === 8 || event.location === ) {
+    // this.codeValue = event.code;
+  this.codeValue = event.altKey;
+    if (event.code === 'Backspace') {
       const el = this.inputRef?.find(element => element.nativeElement.name === this.otpList[index - 1]);
       if (index >= 1) {
         this.f[item].reset();
