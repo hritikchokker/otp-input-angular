@@ -19,5 +19,4 @@ export class AppComponent {
       this.showComp = true;
     });
   }
-  
 }
