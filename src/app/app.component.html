@@ -2,6 +2,19 @@
 	Otp Input Handled in angular
 </h4>
 <div>
-
+	<label>
+    Set Otp input number
+<input #setRef type="number" placeholder="for example 5" />
+</label>
+	<button (click)="setNewInput(setRef.value)"> set input fields</button>
 </div>
-<app-otp-input [totalDigits]="5"></app-otp-input>
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+
+<ng-container *ngIf="showComp">
+	<app-otp-input [totalDigits]="otpInput"></app-otp-input>
+</ng-container>
