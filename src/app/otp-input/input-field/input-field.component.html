@@ -1,0 +1,18 @@
+
+<ng-container *ngIf="otpList">
+  <form [formGroup]="form">
+    <ng-container *ngFor="let item of otpList;let i=index;">
+      <input maxlength="1" [name]="item" #inp formControlName="{{item}}" (keyup)="handleUserInput($event,item,inp,i)" type="text" placeholder="hritik">
+    </ng-container>
+  </form>
+</ng-container>
+
+<ng-container *ngIf="finalValues">
+  <h1 style="text-align: center;margin-top: 20px;">
+    {{finalValues }}
+  </h1>
+  <h4 style="text-align: center;margin-top: 20px;">
+    final value
+  </h4>
+</ng-container>
+
